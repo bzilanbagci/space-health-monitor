@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbit Health Check - Astronaut Self-Assessment (Demo)</title>
+  <meta name="description" content="Demo tool that helps astronauts assess their own health indicators.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="page header-inner">
+      <div>
+        <h1>Orbit Health Check</h1>
+        <p class="tagline">Self-assessment dashboard for crew health during space missions</p>
+      </div>
+    </div>
+    <nav class="topnav" aria-label="Sections"><div class="page"><ul>
+      <li><a href="#overall-status">Dashboard</a></li><li><a href="#sec-add">Measurements</a></li><li><a href="#body-panel">Body map</a></li>
+      <li><a href="#chart-panel">Trends</a></li><li><a href="#shields-panel">Hazard Shields</a></li><li><a href="#cell-panel">Image lab</a></li>
+      <li><a href="#export-panel">Export</a></li><li><a href="#sources">Sources</a></li></ul></div></nav>
+  </header>
+
+  <div class="notice" role="note">
+    <div class="page">
+      <p><strong>This tool is for demonstration and is not a medical diagnosis.</strong></p>
+    </div>
+  </div>
+
+  <main id="main" class="page">
+    <div id="reminder-banner" class="reminder" role="status" hidden></div>
+
+    <section id="overall-status" class="panel" aria-live="polite" aria-label="Overall status"></section>
+
+    <section id="trend-alerts" class="panel trend" aria-live="polite" hidden></section>
+
+    <div class="grid">
+      <section id="environment-panel" class="panel" aria-label="Mission environment"></section>
+      <section id="demo-panel" class="panel" aria-label="Demo mode"></section>
+    </div>
+
+    <div class="grid">
+      <div class="col">
+        <section id="sec-add" class="panel" aria-labelledby="h-add">
+          <h2 id="h-add">Add a measurement</h2>
+          <div id="entry-form"></div>
+        </section>
+        <section class="panel" aria-labelledby="h-ind">
+          <h2 id="h-ind">Indicators</h2>
+          <p class="muted small">Select an indicator to see details. Status is based on the latest value.</p>
+          <div id="status-cards" class="cards"></div>
+        </section>
+        <section id="body-panel" class="panel" aria-labelledby="h-body">
+          <h2 id="h-body">Body map</h2>
+          <p class="muted small">Select a body part (mouse, touch, or keyboard: Tab then Enter) to see how spaceflight can affect it.</p>
+          <div id="body-figure"></div>
+          <div id="body-info" aria-live="polite"></div>
+        </section>
+      </div>
+      <div class="col">
+        <section id="chart-panel" class="panel" aria-label="History chart">
+          <div id="chart"></div>
+        </section>
+        <section id="why-result" class="panel" aria-live="polite" aria-label="Why this result"></section>
+        <section id="explanation" class="panel" aria-label="Indicator explanation"></section>
+      </div>
+    </div>
+  </main>
+
+  <div class="page">
+    <div class="grid">
+      <section id="shields-panel" class="panel" aria-label="Hazard Shields"></section>
+      <section id="cell-panel" class="panel" aria-label="Image lab: cell counter"></section>
+      <section id="gamification-panel" class="panel" aria-label="Check-in streak and badges"></section>
+      <section id="export-panel" class="panel" aria-label="Export and data"></section>
+    </div>
+  </div>
+
+  <section id="sources" class="page sources" aria-labelledby="h-src">
+    <div class="panel">
+      <h2 id="h-src">Sources and limits</h2>
+      <ul>
+        <li><strong>Knowledge basis:</strong> the five hazards of human spaceflight from the NASA Human Research Program (HRP):
+          space radiation, isolation and confinement, distance from Earth, gravity fields, and hostile closed environments.
+          Descriptions are summarized in our own words.</li>
+        <li><strong>Further reading:</strong>
+          <a href="https://www.nasa.gov/hrp/hazards" target="_blank" rel="noopener noreferrer">NASA HRP: Five Hazards</a> and
+          <a href="https://humanresearchroadmap.nasa.gov/" target="_blank" rel="noopener noreferrer">Human Research Roadmap</a>.</li>
+        <li><strong>Our own work:</strong> all sample values are synthetic, the indicator ranges are illustrative reference ranges chosen by our team,
+          and the hazard tags are a simplified mapping. No NASA dataset is used for the numbers.</li>
+        <li><strong>Image lab:</strong> the cell counter uses a simple threshold and connected-components method, for education only. Its sample image is either a NASA OSDR image (credited under the image) or a synthetic one, and it is labeled on screen.</li>
+        <li><strong>Hazard Shields quiz:</strong> mini quiz and info card are general facts about the five HRP hazards, written in our own words.</li>
+        <li><strong>Communication delay:</strong> the Mars delay of about 20 minutes each way is an approximation that varies with planet positions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="page footer-grid">
+      <div><h2 class="foot-title">The Engineers</h2>
+        <p class="small muted">General information only. Hazard tags follow the five hazards of human spaceflight described by the NASA Human Research Program, simplified in our own words. Not medical advice.</p></div>
+      <div><h3>Team</h3><ul class="plain"><li>Bedriye Zilan Bağcı</li><li>Sena Demirci</li></ul></div>
+      <div><h3>Location</h3><p>Istanbul Health and Technology University</p></div>
+      <div><h3>Contact</h3><ul class="plain"><li><a href="mailto:bagcibedriyezilan@gmail.com">bagcibedriyezilan@gmail.com</a></li><li><a href="mailto:demircisena2007@gmail.com">demircisena2007@gmail.com</a></li></ul></div>
+    </div>
+  </footer>
+
+  <!-- Classic scripts, loaded in dependency order -->
+  <script src="js/core/namespace.js"></script>
+  <script src="js/data/indicators.js"></script>
+  <script src="js/data/hazards.js"></script>
+  <script src="js/data/environments.js"></script>
+  <script src="js/data/sample-history.js"></script>
+  <script src="js/data/scenarios.js"></script>
+  <script src="js/core/state.js"></script>
+  <script src="js/core/storage.js"></script>
+  <script src="js/core/evaluate.js"></script>
+  <script src="js/core/trends.js"></script>
+  <script src="js/ui/i18n.js"></script>
+  <script src="js/ui/form.js"></script>
+  <script src="js/ui/status-cards.js"></script>
+  <script src="js/ui/explanations.js"></script>
+  <script src="js/ui/chart.js"></script>
+  <script src="js/ui/body-figure.js"></script>
+  <script src="js/ui/environment.js"></script>
+  <script src="js/ui/gamification.js"></script>
+  <script src="js/ui/shields.js"></script>
+  <script src="js/ui/cell-counter.js"></script>
+  <script src="js/ui/exercise.js"></script>
+  <script src="js/ui/reminders.js"></script>
+  <script src="js/ui/export-summary.js"></script>
+  <script src="js/ui/demo-mode.js"></script>
+  <script src="js/ui/a11y.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

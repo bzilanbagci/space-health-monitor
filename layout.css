@@ -1,0 +1,14 @@
+/* layout.css - page grid and responsive rules */
+.page { max-width: 1200px; margin: 0 auto; padding: 0 var(--s3); }
+.site-header { border-bottom: 1px solid var(--border); background: linear-gradient(135deg, #0d1630, #0a1020 60%, #14213f); position: sticky; top: 0; z-index: 30; }
+.header-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2); padding-top: var(--s3); padding-bottom: var(--s3); }
+.tagline { margin: 0; color: var(--muted); }
+.notice { background: #1b2540; border-bottom: 1px solid var(--border); padding: var(--s2) 0; font-size: .9rem; }
+.notice p { margin: 0; }
+main.page { padding-top: var(--s3); padding-bottom: var(--s4); display: flex; flex-direction: column; gap: var(--s3); }
+.grid > * { min-width: 0; }
+.grid { display: grid; grid-template-columns: 1fr; gap: var(--s3); }
+.col { display: flex; flex-direction: column; gap: var(--s3); min-width: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s2); margin-top: var(--s2); }
+.site-footer { border-top: 1px solid var(--border); padding: var(--s3) 0; }
+@media (min-width: 900px) { h1 { font-size: 1.9rem; } }
